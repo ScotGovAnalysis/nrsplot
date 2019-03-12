@@ -3,45 +3,33 @@
 nrsplot
 =======
 
-[![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
+[![Project Status: Concept – Minimal or no implementation has been done yet, or the repository is only intended to be a limited example, demo, or proof-of-concept.](https://www.repostatus.org/badges/latest/concept.svg)](https://www.repostatus.org/#concept)
 
-The goal of nrsplot is to ...
+Use nrsplot to help you create ggplot2 charts in the style used by National Records of Scotland. nrsplot is inspired by the BBC Visual and Data Journalism team's [bbplot](https://medium.com/bbc-visual-and-data-journalism/how-the-bbc-visual-and-data-journalism-team-works-with-graphics-in-r-ed0b35693535). nrsplot can be used interactively or as part of a [reproducible analytical pipeline](https://ukgovdatascience.github.io/rap_companion/).
 
 Installation
 ------------
 
-You can install the released version of nrsplot from [CRAN](https://CRAN.R-project.org) with:
+Install nrsplot from GitHub with:
 
 ``` r
-install.packages("nrsplot")
+# install.packages("devtools")
+devtools::install_github("DataScienceScotland/nrsplot")
+```
+
+If the above does not work, you can install from source:
+
+1.  Go to the nrsplot [repository](https://github.com/DataScienceScotland/nrsplot) on GitHub
+2.  Click **Clone or download** then **Download ZIP**
+3.  Save the file locally (e.g. your H drive) and Unzip
+4.  Install with install.packages()
+
+``` r
+install.packages("your/directory/nrsplot", repos = NULL,
+                 type="source", lib = "your/R/package/library/directory")
 ```
 
 Example
 -------
 
-This is a basic example which shows you how to solve a common problem:
-
-``` r
-## basic example code
-```
-
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
-
-``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
-```
-
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date.
-
-You can also embed plots, for example:
-
-<img src="man/figures/README-pressure-1.png" width="100%" />
-
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub!
+Currently this project is a proof-of-concept. Watch this space for examples.
