@@ -25,7 +25,7 @@ If the above does not work, you can install from source:
 4.  Install with install.packages()
 
 ``` r
-install.packages("your/directory/nrsplot", repos = NULL,
+install.packages("your/directory/nrsplot-master", repos = NULL,
                  type="source", lib = "your/R/package/library/directory")
 ```
 
