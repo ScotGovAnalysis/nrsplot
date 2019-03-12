@@ -10,7 +10,7 @@
 nrs_theme <- function() {
 
   if (.Platform[["OS.type"]] == "windows") {
-    windowsFonts(`Segoe UI` = windowsFont(`Segoe UI`))
+    windowsFonts(`Segoe UI` = windowsFont("Segoe UI"))
   }
 
   nrs_font <- "Segoe UI"
