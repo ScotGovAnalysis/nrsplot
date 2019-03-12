@@ -32,4 +32,26 @@ install.packages("your/directory/nrsplot-master", repos = NULL,
 Example
 -------
 
-Currently this project is a proof-of-concept. Watch this space for examples.
+A normal line chart:
+
+``` r
+library(ggplot2)
+library(nrsplot)
+
+beaver <- beaver1[beaver1[["day"]] == 346,]
+
+p <- ggplot(beaver, aes(time, temp)) +
+  geom_line()
+
+p
+```
+
+<img src="man/figures/README-example-1-1.png" width="100%" />
+
+Apply the NRS theme:
+
+``` r
+p + nrs_theme()
+```
+
+<img src="man/figures/README-example-2-1.png" width="100%" />
