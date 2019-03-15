@@ -1,0 +1,45 @@
+---
+title: "Plot NRS charts with nrsplot"
+author: "Joseph Adams"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Plot NRS charts with nrsplot}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.width = 7
+)
+```
+
+This vignette is not finished - watch out for updates.
+
+## Bar chart
+
+```{r}
+library(ggplot2)
+library(nrsplot)
+set.seed(42)
+
+df <- data.frame(country = c("United Kingdom", "England", "Northern Ireland", "Scotland", "Wales"),
+                 sex = c("female", "male"),
+                 dummy_variable = runif(10, min = 30, max = 40))
+
+p <- ggplot(df, aes(country, dummy_variable, fill = sex)) +
+  geom_col() +
+  coord_flip() +
+  labs(title = "An illustration using random data")
+
+p
+```
+
+
+
+```{r}
+p + nrs_theme()
+```
