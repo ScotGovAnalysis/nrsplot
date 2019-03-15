@@ -10,24 +10,36 @@ Use nrsplot to help you create ggplot2 charts in the style used by National Reco
 Installation
 ------------
 
-Install nrsplot from GitHub with:
+### From GitHub
 
 ``` r
 # install.packages("devtools")
 devtools::install_github("DataScienceScotland/nrsplot")
 ```
 
-If the above does not work, you can install from source:
+### From source
 
 1.  Go to the nrsplot [repository](https://github.com/DataScienceScotland/nrsplot) on GitHub
-2.  Click **Clone or download** then **Download ZIP**
-3.  Save the file locally (e.g. your H drive) and Unzip
-4.  Install with install.packages()
+2.  Click **Clone or download**
+3.  Click **Download ZIP**
+4.  Save the zip file locally
+5.  Unzip the zip file
+6.  Replace &lt;THESE BITS&gt; with your information. Then run in R:
 
 ``` r
-install.packages("your/directory/nrsplot-master", repos = NULL,
-                 type="source", lib = "your/R/package/library/directory")
+install.packages("<FILEPATH OF THE UNZIPPED FILE>/nrsplot-master", repos = NULL,
+                 type="source", lib = "<YOUR R PACKAGE LIBRARY DIRECTORY>")
 ```
+
+Not working? Most people seem to rush these steps. Take a breath and slow down:
+
+-   Have you followed the above steps precisely?
+-   Did you unzip the file?
+-   Did you copy and paste the above code snippet accurately?
+-   Have you used forward slashes in the filepaths?
+-   Does the first filepath point to the file you unzipped?
+    -   Are you sure it's not pointing to the original zipped file? Or the folder **containing** the unzipped file?
+-   Does the second filepath point to your R package library?
 
 Examples
 --------
@@ -52,7 +64,6 @@ p <- ggplot(df, aes(year, var, colour = sex)) +
 p +
   geom_line() +
   geom_point(aes(y = endpoints))
-#> Warning: Removed 76 rows containing missing values (geom_point).
 ```
 
 <img src="man/figures/README-example-1-1.png" width="100%" />
@@ -69,7 +80,6 @@ p +
                                  nrs_palette[["neutral"]][["grey"]])) +
   scale_fill_manual(values = c("white",
                                nrs_palette[["neutral"]][["grey"]]))
-#> Warning: Removed 76 rows containing missing values (geom_point).
 ```
 
 <img src="man/figures/README-example-2-1.png" width="100%" />

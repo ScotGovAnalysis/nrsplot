@@ -20,29 +20,41 @@ Use nrsplot to help you create ggplot2 charts in the style used by National Reco
 
 ## Installation
 
-Install nrsplot from GitHub with:
+### From GitHub
 
 ```{r gh-installation, eval = FALSE}
 # install.packages("devtools")
 devtools::install_github("DataScienceScotland/nrsplot")
 ```
 
-If the above does not work, you can install from source:
+### From source
 
 1. Go to the nrsplot [repository](https://github.com/DataScienceScotland/nrsplot) on GitHub
-1. Click **Clone or download** then **Download ZIP**
-1. Save the file locally (e.g. your H drive) and Unzip
-1. Install with install.packages()
+1. Click **Clone or download**
+1. Click **Download ZIP**
+1. Save the zip file locally
+1. Unzip the zip file
+1. Replace \<THESE BITS\> with your information. Then run in R:
 
 ```{r source-installation, eval = FALSE}
-install.packages("your/directory/nrsplot-master", repos = NULL,
-                 type="source", lib = "your/R/package/library/directory")
+install.packages("<FILEPATH OF THE UNZIPPED FILE>/nrsplot-master", repos = NULL,
+                 type="source", lib = "<YOUR R PACKAGE LIBRARY DIRECTORY>")
 ```
+
+Not working? Most people seem to rush these steps. Take a breath and slow down:
+
+* Have you followed the above steps precisely?
+* Did you unzip the file?
+* Did you copy and paste the above code snippet accurately?
+* Have you used forward slashes in the filepaths?
+* Does the first filepath point to the file you unzipped?
+    * Are you sure it's not pointing to the original zipped file? Or the folder **containing** the unzipped file?
+* Does the second filepath point to your R package library?
 
 ## Examples
 
 A normal line chart:
-```{r example-1}
+```{r example-1, warning = FALSE}
 library(ggplot2)
 library(nrsplot)
 set.seed(42)
@@ -64,7 +76,7 @@ p +
 
 Apply the NRS theme:
 
-```{r example-2}
+```{r example-2, warning = FALSE}
 p +
   geom_line_nrs() +
   geom_point_nrs(aes(y = endpoints, fill = sex, colour = sex)) +
