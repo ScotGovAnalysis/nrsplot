@@ -47,7 +47,7 @@ library(ggplot2)
 library(nrsplot)
 set.seed(42)
 
-df <- data.frame(year = rep(1981:2020, 2),
+df <- data.frame(year = 1981:2020,
                  sex = c(rep("female", 40), rep("male", 40)),
                  dummy_variable = diffinv(rnorm(79)) * 10)
 
