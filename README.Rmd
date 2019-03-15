@@ -39,17 +39,21 @@ install.packages("your/directory/nrsplot-master", repos = NULL,
                  type="source", lib = "your/R/package/library/directory")
 ```
 
-## Example
+## Examples
 
 A normal line chart:
 ```{r example-1}
 library(ggplot2)
 library(nrsplot)
+set.seed(42)
 
-beaver <- beaver1[beaver1[["day"]] == 346,]
+df <- data.frame(year = rep(1981:2020, 2),
+                 sex = c(rep("female", 40), rep("male", 40)),
+                 dummy_variable = diffinv(rnorm(79)) * 10)
 
-p <- ggplot(beaver, aes(time, temp)) +
-  geom_line()
+p <- ggplot(df, aes(year, dummy_variable, colour = sex)) +
+  geom_line() +
+  labs(title = "An illustration using random data")
 
 p
 ```
