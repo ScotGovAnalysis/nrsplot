@@ -27,18 +27,28 @@ library(nrsplot)
 set.seed(42)
 
 df <- data.frame(year = 1981:2020,
-                 dummy_variable = diffinv(rnorm(39)) * 10)
+                 var = diffinv(rnorm(39)) * 10,
+                 endpoints = NA)
 
-p <- ggplot(df, aes(year, dummy_variable)) +
+df[["endpoints"]][df[["year"]] %in% c(1981, 2020)] <-
+  df[["var"]][df[["year"]] %in% c(1981, 2020)]
+
+p <- ggplot(df, aes(year, var)) +
   labs(title = "Remember to use active titles")
 
-p + geom_line()
+p +
+  geom_line() +
+  geom_point(aes(y = endpoints))
 ```
 
 ```{r example-2}
 p +
   geom_line_nrs(colour = nrs_palette[["household"]][["main"]]) + 
-  nrs_theme()
+  geom_point_nrs(aes(y = endpoints),
+                 fill = nrs_palette[["household"]][["main"]],
+                 colour = nrs_palette[["household"]][["main"]]) +
+  nrs_theme() +
+  theme(axis.text.y = element_blank())
 ```
 
 ## Bar chart
@@ -48,10 +58,11 @@ library(ggplot2)
 library(nrsplot)
 set.seed(42)
 
-df <- data.frame(country = c("United Kingdom", "England", "Northern Ireland", "Scotland", "Wales"),
-                 dummy_variable = runif(5, min = 30, max = 40))
+df <- data.frame(country = c("United Kingdom", "England", "Northern Ireland",
+                             "Scotland", "Wales"),
+                 var = runif(5, min = 30, max = 40))
 
-p <- ggplot(df, aes(country, dummy_variable, label = format(round(dummy_variable, 1), nsmall = 1))) +
+p <- ggplot(df, aes(country, var, label = format(round(var, 1), nsmall = 1))) +
   coord_flip() +
   labs(title = "Remember to use active titles")
 
@@ -72,11 +83,13 @@ library(ggplot2)
 library(nrsplot)
 set.seed(42)
 
-df <- data.frame(country = c("United Kingdom", "England", "Northern Ireland", "Scotland", "Wales"),
+df <- data.frame(country = c("United Kingdom", "England", "Northern Ireland",
+                             "Scotland", "Wales"),
                  sex = c("female", "male"),
-                 dummy_variable = runif(10, min = 30, max = 40))
+                 var = runif(10, min = 30, max = 40))
 
-p <- ggplot(df, aes(country, dummy_variable, fill = sex, label = format(round(dummy_variable, 1), nsmall = 1))) +
+p <- ggplot(df, aes(country, var, fill = sex,
+                    label = format(round(var, 1), nsmall = 1))) +
   coord_flip() +
   labs(title = "Remember to use active titles")
 

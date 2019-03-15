@@ -24,11 +24,9 @@ nrs_theme <- function(format = "infographic") {
   ggplot2::theme(
 
     # Declutter
-
     panel.background = ggplot2::element_blank(),
     legend.position = "none",
     axis.title = ggplot2::element_blank(),
-    axis.text.y = element_blank(),
     axis.ticks = element_blank(),
 
     # Text

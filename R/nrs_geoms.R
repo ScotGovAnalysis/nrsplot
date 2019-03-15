@@ -25,3 +25,9 @@ geom_col_nrs <- function(...) {
 geom_text_nrs <- function(...) {
   geom_text(..., size = 3.5)
 }
+
+#' @export
+#' @rdname geom_line_nrs
+geom_point_nrs <- function(...) {
+  geom_point(..., shape = 21, size = 2, stroke = 0.5)
+}

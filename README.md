@@ -41,12 +41,18 @@ set.seed(42)
 
 df <- data.frame(year = 1981:2020,
                  sex = c(rep("female", 40), rep("male", 40)),
-                 dummy_variable = diffinv(rnorm(79)) * 10)
+                 var = diffinv(rnorm(79)) * 10,
+                 endpoints = NA)
 
-p <- ggplot(df, aes(year, dummy_variable, colour = sex)) +
+df[["endpoints"]][df[["year"]] %in% c(1981, 2020)] <- df[["var"]][df[["year"]] %in% c(1981, 2020)]
+
+p <- ggplot(df, aes(year, var, colour = sex)) +
   labs(title = "An illustration using random data")
 
-p + geom_line()
+p +
+  geom_line() +
+  geom_point(aes(y = endpoints))
+#> Warning: Removed 76 rows containing missing values (geom_point).
 ```
 
 <img src="man/figures/README-example-1-1.png" width="100%" />
@@ -55,10 +61,15 @@ Apply the NRS theme:
 
 ``` r
 p +
-  geom_line_nrs() + 
+  geom_line_nrs() +
+  geom_point_nrs(aes(y = endpoints, fill = sex, colour = sex)) +
   nrs_theme() +
+  theme(axis.text.y = element_blank()) +
   scale_colour_manual(values = c(nrs_palette[["household"]][["main"]],
-                                 nrs_palette[["neutral"]][["grey"]]))
+                                 nrs_palette[["neutral"]][["grey"]])) +
+  scale_fill_manual(values = c("white",
+                               nrs_palette[["neutral"]][["grey"]]))
+#> Warning: Removed 76 rows containing missing values (geom_point).
 ```
 
 <img src="man/figures/README-example-2-1.png" width="100%" />

@@ -2,5 +2,6 @@
 
 export(geom_col_nrs)
 export(geom_line_nrs)
+export(geom_point_nrs)
 export(geom_text_nrs)
 export(nrs_theme)

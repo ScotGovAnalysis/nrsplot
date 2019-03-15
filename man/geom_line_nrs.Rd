@@ -4,6 +4,7 @@
 \alias{geom_line_nrs}
 \alias{geom_col_nrs}
 \alias{geom_text_nrs}
+\alias{geom_point_nrs}
 \title{Custom ggplot geoms with NRS defaults}
 \usage{
 geom_line_nrs(...)
@@ -11,6 +12,8 @@ geom_line_nrs(...)
 geom_col_nrs(...)
 
 geom_text_nrs(...)
+
+geom_point_nrs(...)
 }
 \description{
 These geoms are normal ggplot geoms. The only difference is they specify some
