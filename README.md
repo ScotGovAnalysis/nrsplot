@@ -44,10 +44,9 @@ df <- data.frame(year = 1981:2020,
                  dummy_variable = diffinv(rnorm(79)) * 10)
 
 p <- ggplot(df, aes(year, dummy_variable, colour = sex)) +
-  geom_line() +
   labs(title = "An illustration using random data")
 
-p
+p + geom_line()
 ```
 
 <img src="man/figures/README-example-1-1.png" width="100%" />
@@ -55,7 +54,11 @@ p
 Apply the NRS theme:
 
 ``` r
-p + nrs_theme()
+p +
+  geom_line_nrs() + 
+  nrs_theme() +
+  scale_colour_manual(values = c(nrs_palette[["household"]][["main"]],
+                                 nrs_palette[["neutral"]][["grey"]]))
 ```
 
 <img src="man/figures/README-example-2-1.png" width="100%" />

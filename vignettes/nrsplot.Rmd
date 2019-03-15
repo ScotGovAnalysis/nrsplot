@@ -19,7 +19,53 @@ knitr::opts_chunk$set(
 
 This vignette is not finished - watch out for updates.
 
+## Line chart
+
+```{r}
+library(ggplot2)
+library(nrsplot)
+set.seed(42)
+
+df <- data.frame(year = 1981:2020,
+                 dummy_variable = diffinv(rnorm(39)) * 10)
+
+p <- ggplot(df, aes(year, dummy_variable)) +
+  labs(title = "Remember to use active titles")
+
+p + geom_line()
+```
+
+```{r example-2}
+p +
+  geom_line_nrs(colour = nrs_palette[["household"]][["main"]]) + 
+  nrs_theme()
+```
+
 ## Bar chart
+
+```{r}
+library(ggplot2)
+library(nrsplot)
+set.seed(42)
+
+df <- data.frame(country = c("United Kingdom", "England", "Northern Ireland", "Scotland", "Wales"),
+                 dummy_variable = runif(5, min = 30, max = 40))
+
+p <- ggplot(df, aes(country, dummy_variable, label = format(round(dummy_variable, 1), nsmall = 1))) +
+  coord_flip() +
+  labs(title = "Remember to use active titles")
+
+p + geom_col()
+```
+
+```{r}
+p +
+  geom_col_nrs(fill = nrs_palette[["population"]][["main"]]) +
+  geom_text_nrs(position = position_stack(vjust = 0.5), colour = "white") +
+  nrs_theme()
+```
+
+## Stacked bar chart
 
 ```{r}
 library(ggplot2)
@@ -30,16 +76,20 @@ df <- data.frame(country = c("United Kingdom", "England", "Northern Ireland", "S
                  sex = c("female", "male"),
                  dummy_variable = runif(10, min = 30, max = 40))
 
-p <- ggplot(df, aes(country, dummy_variable, fill = sex)) +
-  geom_col() +
+p <- ggplot(df, aes(country, dummy_variable, fill = sex, label = format(round(dummy_variable, 1), nsmall = 1))) +
   coord_flip() +
-  labs(title = "An illustration using random data")
+  labs(title = "Remember to use active titles")
 
-p
+p + geom_col()
 ```
 
 
 
 ```{r}
-p + nrs_theme()
+p +
+  geom_col_nrs() +
+  geom_text_nrs(position = position_stack(vjust = 0.5), colour = "white") +
+  nrs_theme() +
+  scale_fill_manual(values = c(nrs_palette[["population"]][["main"]],
+                               nrs_palette[["neutral"]][["tundora"]]))
 ```
