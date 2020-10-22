@@ -83,3 +83,6 @@ p +
 ```
 
 <img src="man/figures/README-example-2-1.png" width="100%" />
+
+## Licence
+This repository is available under the [Open Government Licence v3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/).
